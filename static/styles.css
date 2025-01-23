@@ -1,0 +1,84 @@
+/* static/styles.css */
+
+/* Aplicar la fuente Lato a toda la página */
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    word-wrap: break-word;  /* Ajusta el texto largo */
+    white-space: normal;  /* Permite que se haga salto de línea */
+}
+
+/* Establecer la proporción entre las columnas */
+th:nth-child(1), td:nth-child(1) {
+    width: 7.14%;  /* 1/14 del total */
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 7.14%;  /* 1/14 del total */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 14.28%;  /* 2/14 del total */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 35.71%;  /* 5/14 del total */
+}
+
+th:nth-child(5), td:nth-child(5) {
+    width: 21.43%;  /* 3/14 del total */
+}
+
+/* Estilo para el título y el botón al costado */
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo actualizado para el botón de cerrar sesión */
+.logout-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #FF9A04; /* Nuevo color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #FF7A00; /* Color más oscuro para hover */
+}
+
+/* Estilo para el logo */
+.logo-container {
+    text-align: center; /* Centra el logo horizontalmente */
+    margin: 20px 0; /* Añade espacio alrededor del logo */
+}
+
+.logo-container img {
+    max-width: 100%; /* Asegura que el logo no exceda el ancho disponible */
+    height: auto; /* Mantiene la proporción del logo */
+}

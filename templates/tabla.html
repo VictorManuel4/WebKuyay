@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Logo del Grupo Kuyay -->
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/GrupoKuyay.png') }}" alt="Logo Grupo Kuyay">
+    </div>
+
+    <!-- Botón para cerrar sesión -->
+    <a href="{{ url_for('logout') }}" class="btn btn-danger logout-btn">Cerrar Sesión</a>
+
+    <h2>Resumen de Clientes</h2>
+
+    <!-- Mensaje informativo -->
+    <p>
+        Para que pueda ver su expediente, copie el código de la columna
+        <strong>"EXPEDIENTE SOLICITUD"</strong> que esté sobre su caso en
+        <a href="https://cej.pj.gob.pe/cej/forms/busquedaform.html" target="_blank">la página del CEJ</a>.
+    </p>
+
+    <!-- Tabla de datos -->
+    <table>
+        <thead>
+            <tr>
+                <th>N</th>
+                <th>CLIENTE</th>
+                <th>EXPEDIENTE SOLICITUD</th>
+                <th>SEGUIMIENTO</th>
+                <th>ESTADO FINAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.N }}</td>
+                    <td>{{ cliente.CLIENTE }}</td>
+                    <td>{{ cliente.EXPEDIENTE_SOLICITUD }}</td>
+                    <td>{{ cliente.SEGUIMIENTO | replace('\n', '<br>')| safe }}</td>
+                    <td>{{ cliente.ESTADO_FINAL }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
