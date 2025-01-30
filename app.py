@@ -1,3 +1,6 @@
+import os
+import secrets  # Para generar una clave secreta aleatoria
+
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from sqlalchemy import create_engine, text
 from flask_sqlalchemy import SQLAlchemy
@@ -5,10 +8,13 @@ from datetime import datetime
 
 # Configuración de la base de datos
 app = Flask(__name__)
-app.secret_key = 'tu_clave_secreta'  # Cambia esto a una clave secreta real
+app.secret_key = secrets.token_hex(32)  # Genera una clave secreta aleatoria
 
-# URL de conexión a la base de datos
-DATABASE_URL = "mysql://root:VuSkVBlHCGGnYTpbFdKKMiqrBVrXFjRN@roundhouse.proxy.rlwy.net:18142/railway"
+# Obtener la URL de la base de datos desde las variables de entorno
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("No se encontró la variable de entorno DATABASE_URL")
 
 # Configuración de SQLAlchemy para Flask
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
